@@ -5,6 +5,12 @@
   "description": "Dakota Horizons is a results-focused social media marketing agency. We plan, create and manage your social content so you can focus on running your business.",
   "url": "https://dakotahorizons.com",
   "turnstileSiteKey": "0x4AAAAAAFga8-6cOVJad_68",
+  "social": [
+    {
+      "name": "Facebook",
+      "url": "https://www.facebook.com/dakotahorizons"
+    }
+  ],
   "nav": [
     {
       "label": "Services",
