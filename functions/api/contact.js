@@ -17,8 +17,8 @@ import { isHoneypotFilled, validateContactSubmission } from "../_lib/form-valida
 import { verifyTurnstileToken } from "../_lib/turnstile.mjs";
 
 const SUCCESS_MESSAGE = "Thanks, your message is on its way. We will get back to you within one business day.";
-const SAVED_ONLY_MESSAGE = "Thanks, your message was saved. If it is urgent, please email service@dakotahorizons.com.";
-const FAILURE_MESSAGE = "We could not send your message right now. Please email us at service@dakotahorizons.com.";
+const SAVED_ONLY_MESSAGE = "Thanks, your message was received. We will get back to you within one business day.";
+const FAILURE_MESSAGE = "We could not send your message right now. Please try again in a few minutes.";
 
 export function onRequest() {
   return methodNotAllowedFragment();

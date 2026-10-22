@@ -34,7 +34,7 @@
 
     var result = document.getElementById("contact-result");
     if (result) {
-      result.innerHTML = '<div class="form-error" role="alert">We could not reach our server. Please check your connection and try again, or email service@dakotahorizons.com.</div>';
+      result.innerHTML = '<div class="form-error" role="alert">We could not reach our server. Please check your connection and try again in a few minutes.</div>';
     }
     resetTurnstile(form);
   });

@@ -1,5 +1,5 @@
 const VERIFY_URL = "https://challenges.cloudflare.com/turnstile/v0/siteverify";
-const FALLBACK = "Please email us directly at service@dakotahorizons.com.";
+const FALLBACK = "Please try again in a few minutes.";
 
 export async function verifyTurnstileToken(env, formData, request) {
   const secretKey = env.TURNSTILE_SECRET_KEY;

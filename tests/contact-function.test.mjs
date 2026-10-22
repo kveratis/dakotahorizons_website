@@ -73,13 +73,13 @@ test("rejects a failed Turnstile check without saving", async () => {
   assert.equal(env.inserted.length, 0);
 });
 
-test("still reports the lead as saved when the queue fails", async () => {
+test("still confirms receipt when the queue fails, since the lead is saved", async () => {
   const restore = mockTurnstile(true);
   const env = makeEnv({ queueFails: true });
   const res = await onRequestPost({ request: makeRequest(valid), env });
   restore();
   assert.equal(res.status, 200);
-  assert.match(await res.text(), /was saved/);
+  assert.match(await res.text(), /was received/);
   assert.equal(env.inserted.length, 1);
 });
 
