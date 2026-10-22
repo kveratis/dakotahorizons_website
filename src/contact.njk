@@ -1,0 +1,70 @@
+---
+layout: layouts/base.njk
+title: Contact
+description: Book a free call with Dakota Horizons or send us a message. We reply within one business day.
+permalink: /contact/
+contactForm: true
+---
+<section class="page-hero">
+  <div class="container">
+    <p class="label eyebrow">Contact</p>
+    <h1>Let's talk about your goals</h1>
+    <p class="lead">Tell us a little about your business and we'll be in touch within one business day to set up a free 30-minute call.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container split split--form">
+    <form class="form" id="contact-form" action="/api/contact" method="post" hx-post="/api/contact" hx-target="#contact-result" hx-swap="innerHTML" hx-disabled-elt="find button[type='submit']">
+      <div class="field">
+        <label for="name">Your name</label>
+        <input id="name" name="name" type="text" autocomplete="name" required maxlength="120">
+      </div>
+      <div class="field">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" autocomplete="email" required maxlength="200">
+      </div>
+      <div class="field">
+        <label for="phone">Phone <span class="optional">(optional)</span></label>
+        <input id="phone" name="phone" type="tel" autocomplete="tel" maxlength="40">
+      </div>
+      <div class="field">
+        <label for="business">Business name <span class="optional">(optional)</span></label>
+        <input id="business" name="business" type="text" autocomplete="organization" maxlength="160">
+      </div>
+      <div class="field">
+        <label for="interest">What can we help with?</label>
+        <select id="interest" name="interest">
+          <option value="Not sure yet">Not sure yet</option>
+          <option value="Strategy and planning">Strategy and planning</option>
+          <option value="Content creation">Content creation</option>
+          <option value="Community management">Community management</option>
+          <option value="Paid social">Paid social</option>
+          <option value="Full social media management">Full social media management</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="6" required maxlength="5000"></textarea>
+      </div>
+      <div class="field field--hidden" aria-hidden="true">
+        <label for="website">Leave this field empty</label>
+        <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
+      </div>
+      <div class="cf-turnstile" data-sitekey="{{ site.turnstileSiteKey }}" data-theme="light"></div>
+      <button class="button button--primary" type="submit">Send message</button>
+      <div id="contact-result" class="form-result" aria-live="polite"></div>
+    </form>
+
+    <aside class="contact-aside">
+      <h2>Prefer email?</h2>
+      <p>Write to us any time at <a href="mailto:{{ site.email }}">{{ site.email }}</a>.</p>
+      <h2>What happens next</h2>
+      <ol class="mini-steps">
+        <li>We read your message and reply within one business day.</li>
+        <li>We set up a free 30-minute call at a time that suits you.</li>
+        <li>You get honest recommendations, whether or not we work together.</li>
+      </ol>
+    </aside>
+  </div>
+</section>

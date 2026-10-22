@@ -1,0 +1,22 @@
+{
+  "name": "Dakota Horizons",
+  "tagline": "Social media marketing",
+  "description": "Dakota Horizons is a results-focused social media marketing agency. We plan, create and manage your social content so you can focus on running your business.",
+  "url": "https://dakotahorizons.com",
+  "email": "service@dakotahorizons.com",
+  "turnstileSiteKey": "1x00000000000000000000AA",
+  "nav": [
+    {
+      "label": "Services",
+      "url": "/services/"
+    },
+    {
+      "label": "About",
+      "url": "/about/"
+    },
+    {
+      "label": "Contact",
+      "url": "/contact/"
+    }
+  ]
+}

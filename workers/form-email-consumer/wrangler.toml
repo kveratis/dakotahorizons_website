@@ -1,0 +1,15 @@
+name = "dakota-horizons-form-email-consumer"
+main = "src/index.js"
+compatibility_date = "2026-05-30"
+
+[[queues.consumers]]
+queue = "dakota-horizons-form-emails"
+max_batch_size = 10
+max_batch_timeout = 30
+max_retries = 5
+dead_letter_queue = "dakota-horizons-form-emails-dlq"
+
+[[send_email]]
+name = "EMAIL"
+allowed_destination_addresses = ["service@dakotahorizons.com"]
+allowed_sender_addresses = ["noreply@dakotahorizons.com"]

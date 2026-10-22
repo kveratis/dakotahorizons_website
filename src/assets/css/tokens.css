@@ -1,0 +1,36 @@
+/* Dakota Horizons design tokens. Source of truth: the Dakota Horizons design system (tokens.json). */
+
+@font-face { font-family: "Plus Jakarta Sans"; src: url("/assets/fonts/PlusJakartaSans-400.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Plus Jakarta Sans"; src: url("/assets/fonts/PlusJakartaSans-600.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: "Plus Jakarta Sans"; src: url("/assets/fonts/PlusJakartaSans-700.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: "Plus Jakarta Sans"; src: url("/assets/fonts/PlusJakartaSans-800.woff2") format("woff2"); font-weight: 800; font-style: normal; font-display: swap; }
+
+:root {
+  /* Color */
+  --surface-100: #fafaf7;
+  --surface-200: #f1eefc;
+  --ink: #1b1b1f;
+  --ink-muted: #5b5866;
+  --line: #e6e3ee;
+  --violet: #6b4eff;
+  --violet-deep: #5536e8;
+  --sunshine: #ffc93c;
+  --sunshine-soft: #fff1c7;
+  --white: #ffffff;
+  --ink-reversed-muted: #b9b5c6;
+
+  /* Type */
+  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* Spacing */
+  --space-2: 8px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+
+  /* Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-pill: 999px;
+}

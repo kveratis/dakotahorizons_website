@@ -1,0 +1,26 @@
+{
+  "name": "dakota-horizons-site",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Marketing website for Dakota Horizons, a social media marketing agency.",
+  "type": "module",
+  "scripts": {
+    "start": "eleventy --serve",
+    "serve": "eleventy --serve",
+    "build": "eleventy",
+    "test": "node --test tests/*.test.mjs",
+    "clean": "rm -rf _site",
+    "pages:dev": "npm run build && npx wrangler pages dev _site",
+    "pages:deploy": "npm run build && npx wrangler pages deploy _site --project-name dakota-horizons",
+    "db:migrate:local": "npx wrangler d1 migrations apply dakota-horizons-leads --local",
+    "db:migrate:remote": "npx wrangler d1 migrations apply dakota-horizons-leads --remote",
+    "worker:email:deploy": "npx wrangler deploy --config workers/form-email-consumer/wrangler.toml"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "3.1.7",
+    "wrangler": "4.151.3"
+  }
+}

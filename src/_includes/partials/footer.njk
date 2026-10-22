@@ -1,0 +1,23 @@
+<footer class="site-footer">
+  <div class="container site-footer__inner">
+    <div class="site-footer__brand">
+      <img src="/assets/img/logo-reversed.svg" alt="{{ site.name }}" width="220" height="62">
+      <p>Friendly, results-focused social media marketing for growing businesses.</p>
+    </div>
+    <nav class="site-footer__nav" aria-label="Footer">
+      <ul>
+        <li><a href="/">Home</a></li>
+        {% for item in site.nav %}
+        <li><a href="{{ item.url }}">{{ item.label }}</a></li>
+        {% endfor %}
+      </ul>
+    </nav>
+    <div class="site-footer__contact">
+      <p class="label">Get in touch</p>
+      <p><a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
+    </div>
+  </div>
+  <div class="container site-footer__legal">
+    <p>&copy; {{ "" | year }} {{ site.name }}. All rights reserved.</p>
+  </div>
+</footer>

@@ -1,0 +1,14 @@
+name = "dakota-horizons"
+pages_build_output_dir = "./_site"
+compatibility_date = "2026-05-30"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "dakota-horizons-leads"
+# Replace with the id printed by: npx wrangler d1 create dakota-horizons-leads
+database_id = "REPLACE_WITH_D1_DATABASE_ID"
+migrations_dir = "migrations"
+
+[[queues.producers]]
+binding = "FORM_EMAIL_QUEUE"
+queue = "dakota-horizons-form-emails"
