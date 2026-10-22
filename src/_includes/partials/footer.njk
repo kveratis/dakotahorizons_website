@@ -18,6 +18,10 @@
     </div>
   </div>
   <div class="container site-footer__legal">
-    <p>&copy; {{ "" | year }} {{ site.name }}. All rights reserved.</p>
+    <p>&copy; {{ "" | year }} {{ site.legalName }}. All rights reserved.</p>
+    <ul class="site-footer__legal-links">
+      <li><a href="/privacy-policy/"{% if page.url == "/privacy-policy/" %} aria-current="page"{% endif %}>Privacy Policy</a></li>
+      <li><a href="/terms-of-service/"{% if page.url == "/terms-of-service/" %} aria-current="page"{% endif %}>Terms of Service</a></li>
+    </ul>
   </div>
 </footer>

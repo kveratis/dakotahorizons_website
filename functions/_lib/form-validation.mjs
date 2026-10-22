@@ -6,7 +6,8 @@ export const INTEREST_OPTIONS = [
   "Content creation",
   "Community management",
   "Paid social",
-  "Full social media management"
+  "Full social media management",
+  "Privacy request"
 ];
 
 export function readString(value, maxLength) {

@@ -1,5 +1,6 @@
 {
   "name": "Dakota Horizons",
+  "legalName": "Dakota Horizons Home LLC",
   "tagline": "Social media marketing",
   "description": "Dakota Horizons is a results-focused social media marketing agency. We plan, create and manage your social content so you can focus on running your business.",
   "url": "https://dakotahorizons.com",
@@ -17,5 +18,9 @@
       "label": "Contact",
       "url": "/contact/"
     }
-  ]
+  ],
+  "legal": {
+    "effectiveDate": "October 22, 2026",
+    "governingState": "South Dakota"
+  }
 }

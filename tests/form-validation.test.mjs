@@ -57,3 +57,9 @@ test("detects a filled honeypot", () => {
   assert.equal(isHoneypotFilled(form({ website: "spam.example" })), true);
   assert.equal(isHoneypotFilled(form({ website: "" })), false);
 });
+
+test("accepts the Privacy request topic", () => {
+  const result = validateContactSubmission(form({ name: "Sam", email: "sam@example.com", message: "Please delete my data.", interest: "Privacy request" }));
+  assert.equal(result.ok, true);
+  assert.equal(result.value.interest, "Privacy request");
+});
