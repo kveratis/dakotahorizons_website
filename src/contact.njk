@@ -15,7 +15,7 @@ contactForm: true
 
 <section class="section">
   <div class="container split split--form">
-    <form class="form" id="contact-form" action="/api/contact" method="post" hx-post="/api/contact" hx-target="#contact-result" hx-swap="innerHTML" hx-disabled-elt="find button[type='submit']">
+    <form class="form" id="contact-form" action="/api/contact" method="post" hx-post="/api/contact" hx-target="#contact-result" hx-swap="innerHTML" hx-disable="find button[type='submit']">
       <div class="field">
         <label for="name">Your name</label>
         <input id="name" name="name" type="text" autocomplete="name" required maxlength="120">
