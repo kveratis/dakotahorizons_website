@@ -64,33 +64,34 @@ The contact form follows the same pattern as the Soul Detailers site:
 
 A separate Worker is needed because Pages Functions cannot use the `send_email` binding.
 
-### One-time Cloudflare setup
+Email goes out through **Cloudflare Email Sending**, the same as Soul Detailers. It does not use Email Routing, so incoming mail for dakotahorizons.com still goes to our own mail server. Sending only needs the records Cloudflare manages on the `cf-bounce` subdomain (`cf-bounce` MX and SPF, and `cf-bounce._domainkey` DKIM).
 
-Run these from this folder after `npm install` and `npx wrangler login`.
+### Cloudflare resources
 
-1. **Email Routing.** In the Cloudflare dashboard for dakotahorizons.com, enable Email Routing and add `service@dakotahorizons.com` as a verified destination address. Sending through the `send_email` binding only works to verified destinations.
-2. **D1 database.**
-   ```bash
-   npx wrangler d1 create dakota-horizons-leads
-   ```
-   Copy the printed `database_id` into `wrangler.toml`, then apply the table:
-   ```bash
-   npm run db:migrate:remote
-   ```
-3. **Queues.**
-   ```bash
-   npx wrangler queues create dakota-horizons-form-emails
-   npx wrangler queues create dakota-horizons-form-emails-dlq
-   ```
-4. **Email Worker.**
-   ```bash
-   npm run worker:email:deploy
-   ```
-5. **Turnstile.** In the dashboard, create a Turnstile widget for dakotahorizons.com. Put the site key in `src/_data/site.json` (`turnstileSiteKey`; the current value is Cloudflare's always-pass test key) and add the secret key to the Pages project:
-   ```bash
-   npx wrangler pages secret put TURNSTILE_SECRET_KEY --project-name dakota-horizons
-   ```
-6. **Deploy the site** with `npm run pages:deploy`, or connect the repository in the dashboard (build command `npm run build`, output directory `_site`). The D1 and queue bindings come from `wrangler.toml`.
+| Resource | Name | Notes |
+| --- | --- | --- |
+| Email Sending domain | dakotahorizons.com | Enabled and configured |
+| D1 database | `dakota-horizons-leads` | Id in `wrangler.toml`; migration `0001` applied |
+| Queue | `dakota-horizons-form-emails` | Producer: Pages Function. Consumer: email Worker |
+| Dead letter queue | `dakota-horizons-form-emails-dlq` | Messages that failed 5 sends |
+| Turnstile widget | `DakotaHorizonsForms` | Site key in `src/_data/site.json`; secret is the Pages secret `TURNSTILE_SECRET_KEY` |
+| Pages project | `dakota-horizons` | GitHub `kveratis/dakotahorizons_website`, branch `main`, build `npm run build`, output `_site` |
+| Worker | `dakota-horizons-form-email-consumer` | Deploy with `npm run worker:email:deploy` |
+
+### Recreating the setup
+
+If these ever need to be rebuilt (for example in another account), after `npm install` and `npx wrangler login`:
+
+```bash
+npx wrangler d1 create dakota-horizons-leads      # put the new id in wrangler.toml
+npm run db:migrate:remote
+npx wrangler queues create dakota-horizons-form-emails
+npx wrangler queues create dakota-horizons-form-emails-dlq
+npm run worker:email:deploy
+npx wrangler pages secret put TURNSTILE_SECRET_KEY --project-name dakota-horizons
+```
+
+Add the domain under **Email Service > Email Sending** in the dashboard, and create a Turnstile widget for the site's hostnames.
 
 ### Local testing
 
@@ -100,7 +101,7 @@ Create a `.dev.vars` file (already ignored by git) with Cloudflare's always-pass
 TURNSTILE_SECRET_KEY=1x0000000000000000000000000000000AA
 ```
 
-Then run `npm run db:migrate:local` once and `npm run pages:dev`. Submissions are saved to the local D1 database; emails are only sent once deployed.
+Then run `npm run db:migrate:local` once and `npm run pages:dev`. Submissions are saved to the local D1 database; emails are only sent once deployed. The local Turnstile widget needs Cloudflare's always-pass test site key (`1x00000000000000000000AA`) in `site.json` if `localhost` verification gives you trouble.
 
 Run the unit tests with `npm test`.
 

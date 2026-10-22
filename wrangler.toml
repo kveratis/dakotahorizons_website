@@ -5,8 +5,7 @@ compatibility_date = "2026-05-30"
 [[d1_databases]]
 binding = "DB"
 database_name = "dakota-horizons-leads"
-# Replace with the id printed by: npx wrangler d1 create dakota-horizons-leads
-database_id = "REPLACE_WITH_D1_DATABASE_ID"
+database_id = "8d2f6c78-f27f-4b6d-abc3-15074921a3c1"
 migrations_dir = "migrations"
 
 [[queues.producers]]
